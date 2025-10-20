@@ -8,6 +8,8 @@ ink = 1
 pins=[]
 buzzer = Pin(4,Pin.OUT)
 button = Pin(5,Pin.IN,Pin.PULL_DOWN)
+running = False
+lastState = 0
 
 for i in range(start_pin, end_pin +1):
     pins.append(Pin(i,Pin.OUT))
@@ -17,7 +19,12 @@ print("Jizda zacina!!!")
 
 while True:
     try:
-        if button.value() == 1:
+        currentState = button.value()
+        if currentState == 1 and lastState == 0:
+            running = not running
+        lastState = currentState
+
+        if running:
             pins[pos].on()
             sleep(0.1)
             pins[pos].off()
