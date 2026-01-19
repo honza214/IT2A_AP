@@ -35,7 +35,7 @@ def leftright():
     hadL()
     hadR()
 
-def blikOba():
+def blikOb():
     zhasni()
     for j in range(2):
         for i, led in enumerate(leds):
@@ -87,7 +87,7 @@ def breath():
 
 while True:
     try:
-        #blikOba()#
+        #blikOb()#
         #leftright()#
         hadR()
         hadL()
