@@ -70,7 +70,44 @@ def blik_obdva():
             zhasni_vse()
             sleep_ms(100)
                 
-                
+def pozvolna_doprava_apakzhasni():
+    try:
+        for led in leds:
+            zapni_pozvolna(led)
+        for led in reversed(leds):
+            zhasni_pozvolna(led)
+            vypni(led)
+    except KeyboardInterrupt:
+            print("exit")
+
+
+def pozvolna_doleva_apakzhasni():
+    try:
+        for led in reversed(leds):
+            zapni_pozvolna(led)
+        for led in leds:
+            zhasni_pozvolna(led)
+            vypni(led)
+    except KeyboardInterrupt:
+        print("exit")
+
+    
+def breath():
+    pwm_leds = leds
+    try:
+        for duty in range(MIN_JAS, MAX_JAS, FREKVENCE):
+            for pwm_led in pwm_leds:
+                pwm_led.duty_u16(duty)
+            sleep_ms(50)
+        for duty in range(MAX_JAS, MIN_JAS, -FREKVENCE):
+            for pwm_led in pwm_leds:
+                pwm_led.duty_u16(duty)
+            sleep_ms(50)
+    except KeyboardInterrupt:
+        print("exit")
+        
+        
+
     
           
 while True:
@@ -83,8 +120,10 @@ while True:
         #hadR()
         #hadL()
         #blik()
-        blik_obdva()
-        
+        #blik_obdva()
+        pozvolna_doprava_apakzhasni()
+        pozvolna_doleva_apakzhasni()
+        breath()
     except KeyboardInterrupt:
         print("exit")
         break
