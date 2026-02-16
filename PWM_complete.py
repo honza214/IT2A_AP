@@ -3,7 +3,7 @@ from utime import sleep_ms
 
 MAX_JAS = 65535
 MIN_JAS = 0
-FREKVENCE = 1000
+FREKVENCE = 1500
 
 leds = []
 
@@ -127,3 +127,4 @@ while True:
     except KeyboardInterrupt:
         print("exit")
         break
+
