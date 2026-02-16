@@ -61,14 +61,22 @@ def blik():
     sleep_ms(50)
 
 def blik_obdva():
-     zhasni_vse()
-     for j in range(2):
-          for i, led in enumerate(leds):
+    zhasni_vse()
+    for i in range(2):
+        for i, led in enumerate(leds):
             if i % 2 == 0:
                 zapni(led)
-            sleep_ms(100)
-            zhasni_vse()
-            sleep_ms(100)
+        sleep_ms(100)
+        zhasni_vse()
+        sleep_ms(100)
+
+    for i in range(2):
+        for i, led in enumerate(leds):
+            if i % 2 != 0:
+                zapni(led)
+        sleep_ms(100)
+        zhasni_vse()
+        sleep_ms(100)
                 
 def pozvolna_doprava_apakzhasni():
     try:
@@ -127,4 +135,5 @@ while True:
     except KeyboardInterrupt:
         print("exit")
         break
+
 
